@@ -2,24 +2,25 @@
 % LANGEVIN vs THEORY 
 % Comparison between stochastic simulations and analytical predictions 
 % for the fluctuations of the signalling molecules
+%
+% This script also computes and saves equilibrium points and steady-state
+% second moments
 % =========================================================================
 
 % Results will be saved in the folder structure listed below.
 % NOTE: These folders must be created manually before running this script.
-%
-% FIT_0.03/nAv_CM
-% FIT_0.03/nAv_RM
-% FIT_0.3/nAv_CM
-% FIT_0.3/nAv_RM
-% MIN_0.03/nAv_CM
-% MIN_0.03/nAv_RM
-% MIN_0.3/nAv_CM
-% MIN_0.3/nAv_RM
+%   SecMoms_EqPoints/
+%   FIT_0.03/nAv_CM   FIT_0.03/nAv_RM
+%   FIT_0.3/nAv_CM    FIT_0.3/nAv_RM
+%   MIN_0.03/nAv_CM   MIN_0.03/nAv_RM
+%   MIN_0.3/nAv_CM    MIN_0.3/nAv_RM
 %
 
 
 tic
 
+% Output folder for equilibrium points and second moments
+output_folder = 'SecMoms_EqPoints/';
 
 % Initial info
 n = 11;
@@ -82,6 +83,7 @@ y0_12 = [y0(1:2) y0(4:7) y0(9:11)];
 
 % Integration time span for the deterministic ODE solver
 tspan = [3 60000];
+V     = 1000;
 
 % Params for Langevin
 dt     = 1.25e-4;
@@ -111,14 +113,11 @@ for t = 1:nTypes
     end
 
 
-    
     % Loop of alpha3
     for i = 1:na
     
-        % alpha 3
+        % Set alpha3 and alpha2
         params(10) = alpha3Vet(i);
-        
-        % alpha 2
         params(9) = rap_alphas*alpha3Vet(i);
     
     
@@ -127,12 +126,26 @@ for t = 1:nTypes
         % Solve Deterministic system to evaluate equilibrium points
         [tsol,ysol] = ode45(@(t,y) sistemODE(t,y,params), tspan, y0); 
         equilibriumPoints = ysol(end,:);
+
+        % Save equilibrium points to file
+        eq_Points   = equilibriumPoints * V; % sol det * V
+        fileEqPoint = strcat(output_folder,type,'_eq_Points_a3_',num2str(params(10)),'_CM.dat');
+        save(fileEqPoint,'eq_Points','-ascii');
+        
         
         % Theoretical second moments
         [M,B] = calcMat_M_B(params,equilibriumPoints);
+        % Build the linear system for the steady-state second moments
+        [bigM, bigB] = matSecMoms(M,B,n);
+        % Solve for the steady-state second moments
+        secMom = -inv(bigM)*bigB;
+    
+        % Save second moments
+        fileSecMom = strcat(output_folder,type,'_secMom_a3_',num2str(params(10)),'_CM.dat');
+        save(fileSecMom,'secMom','-ascii')
         
         % Get Matrix G for the noise:
-        G=chol(B)'; % B=G*G'
+        G = chol(B)'; % B=G*G'
         
         
         % Solve Langevin Equation
@@ -153,13 +166,27 @@ for t = 1:nTypes
         % Solve Deterministic system to get equilibrium points
         [tsol_12,ysol_12] = ode45(@(t,y) sistemODE_12(t,y,params), tspan, y0_12);
         equilibriumPoints_12 = ysol_12(end,:);
+
+        % Save equilibrium points to file
+        eq_Points_12   = equilibriumPoints_12 * V; % sol det * V
+        fileEqPoint_12 = strcat(output_folder,type,'_eq_Points_a3_',num2str(params(10)),'_RM.dat');
+        save(fileEqPoint_12,'eq_Points_12','-ascii');
+        
         
         % Theoretical second moments
         [M_12,B_12] = calcMat_M_B_12(params,equilibriumPoints_12);
+        % Build the linear system for the steady-state second moments
+        [bigM_12, bigB_12] = matSecMoms(M_12,B_12,n-2);
+        % Solve for the steady-state second moments
+        secMom_12 = -inv(bigM_12)*bigB_12;
+    
+        % Save second moments
+        fileSecMom_12 = strcat(output_folder,type,'_secMom_a3_',num2str(params(10)),'_RM.dat');
+        save(fileSecMom_12,'secMom_12','-ascii')
         
         
         % Get Matrix G for the noise:
-        G_12=chol(B_12)'; % B=G*G'
+        G_12 = chol(B_12)'; % B=G*G'
         
         
         % Solve Langevin Equation
