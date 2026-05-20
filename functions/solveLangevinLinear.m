@@ -1,5 +1,5 @@
 
-function [t,sol]=solveLangevinLineare(M,G,nSteps,dt,startPoint,n)
+function [t,sol]=solveLangevinLinear(M,G,nSteps,dt,startPoint,n)
 
 % Solves a linear Langevin equation using the Euler-Maruyama scheme:
 %
