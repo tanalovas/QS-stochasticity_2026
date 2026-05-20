@@ -19,7 +19,7 @@ paper citation...
 
 ---
 
-## File Overview
+## File overview
 
 ### Data
 
@@ -111,7 +111,7 @@ where G is the Cholesky factor of B (satisfying B = G\*G').
 
 ---
 
-## Analysis and plot Scripts
+## Scripts: Analysis and plots
 
 #### `plot_det_sys_exp_data.m`
 Plots the deterministic solution of the Complete Model against experimental data for the three measured species: HC8, HC10, and C8.
@@ -186,7 +186,7 @@ Loads Langevin simulation output and theoretical second moments for all 4 cases 
 2. Finds a common bin range across averages, then recomputes all histograms on the same edges and averages them
 3. Normalises to area = 1 and plots alongside theoretical Gaussians
 
-**Output:** One 3×3 figure per case (9 subplots, one per species in the RM), with CM and RM bars and theoretical curves overlaid.
+**Output:** One 3×3 figure per case (9 subplots, one per species in the RM), with CM and RM bars and theoretical curves overlaid (Figure 4).
 
 **Depends on:** output of `langevin_sims.m`
 
@@ -204,7 +204,7 @@ Loads Langevin simulation output and theoretical second moments for all 4 cases 
 ```
 ---
 
-## Parameter Vector
+## Parameter vector
 
 All scripts share the same 10-element `params` vector:
 
@@ -223,7 +223,7 @@ All scripts share the same 10-element `params` vector:
 
 ---
 
-## Species Ordering
+## Species
 
 | Index | CM species | RM species |
 |-------|-----------|-----------|
