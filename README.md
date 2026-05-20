@@ -1,7 +1,8 @@
 # Stochasticity in multi-layered Quorum Sensing systems
 
 This repository contains MATLAB scripts and functions for the analysis of the paper:
-"Stochasticity in multi-layered Quorum Sensing systems"
+"Stochasticity in multi-layered Quorum Sensing systems".
+
 It describes _Burkholderia thailandensis_ quorum sensing network, that has three  LuxI/LuxR-type circuits: BtaI1/BtaR1 (QS-1), BtaI2/BtaR2 (QS-2), and BtaI3/BtaR3 (QS-3). They synthesise and respond to distinct signalling molecules: HC8, HC10 and C8, and are hierarchically organised and interconnected, resulting in sequential activation and coordinated regulation of gene expression.
 
 The workflow compares a **Complete Model** (QS-1, QS-2 and QS-3) against a **Reduced Model** (QS-3 removed) in terms of the second moments, to assess the stochastic fluctuations simulated via a linearised Langevin equation.
@@ -9,6 +10,12 @@ The workflow compares a **Complete Model** (QS-1, QS-2 and QS-3) against a **Red
 The main steps of this analysis are:
 - Assessing the role of kinetic parameters in shaping fluctuations: parameter scan over the inhibition and activation rates kin and katt
 - Validate analytical predictions using the fitted data and the set of parameters found.
+
+---
+
+## How to cite
+
+paper citation...
 
 ---
 
