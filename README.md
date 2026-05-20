@@ -8,7 +8,7 @@ It describes _Burkholderia thailandensis_ quorum sensing network, that has three
 The workflow compares a **Complete Model** (QS-1, QS-2 and QS-3) against a **Reduced Model** (QS-3 removed) in terms of the second moments, to assess the stochastic fluctuations simulated via a linearised Langevin equation.
 
 The main steps of this analysis are:
-- Assessing the role of kinetic parameters in shaping fluctuations: parameter scan over the inhibition and activation rates kin and katt
+- Assessing the role of kinetic parameters in shaping fluctuations: parameter scan over the inhibition and activation rates $k_{in}$ and $k_{att}$
 - Validate analytical predictions using the fitted data and the set of parameters found.
 
 ---
