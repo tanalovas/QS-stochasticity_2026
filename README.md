@@ -107,7 +107,7 @@ Implements the linearised Langevin equation using the **Euler-Maruyama** algorit
 
 ## Scripts: Analysis and plots
 
-#### `fit_parameters.m`
+#### `fit_model_params.m`
 Fits the model parameters to the experimental time-series data for C8, HC10, and HC8 (from Le Guillouzer et. al. 2018) by minimising an objective function.
 The experimental data is interpolated onto a finer uniform time grid.
 
