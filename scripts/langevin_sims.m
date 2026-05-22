@@ -192,7 +192,7 @@ for t = 1:nTypes
         % Solve Langevin Equation
         for nAv=1:nAverages
         
-            [t_12,sol_12] = solveLangevinLineare(M_12,G_12,nSteps,dt,zeros(n-2,1),n-2);
+            [t_12,sol_12] = solveLangevinLinear(M_12,G_12,nSteps,dt,zeros(n-2,1),n-2);
             % Subsample trajectory before saving to reduce file size
             matrixSol_12 = [t_12(1:skip:end)' sol_12(1:skip:end,:)];
             
