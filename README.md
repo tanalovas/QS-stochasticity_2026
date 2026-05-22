@@ -90,17 +90,12 @@ Builds the linear system for the steady-state second moments from M and B.
 ---
 
 #### `solveLangevinLinear.m`
-Implements the linearised Langevin equation using the **Euler-Maruyama** algorithm:
-
-```
-d(csi) = M*csi*dt + G*dW
-```
-
-where G is the Cholesky factor of B (satisfying B = G\*G').
+Implements the linearised Langevin equation using the **Euler-Maruyama** algorithm,
+whith G as the Cholesky factor of B (satisfying B = G\*G').
 
 `[t, sol] = solveLangevinLinear(M, G, nSteps, dt, startPoint, n)`
 
-- `M` - (n×n) drift matrix
+- `M` — n×n matrix
 - `G` - (n×n) noise matrix, Cholesky factor of B
 - `nSteps` - total number of time steps
 - `dt` - integration time step
