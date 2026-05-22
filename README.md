@@ -90,8 +90,7 @@ Builds the linear system for the steady-state second moments from M and B.
 ---
 
 #### `solveLangevinLinear.m`
-Implements the linearised Langevin equation using the **Euler-Maruyama** algorithm,
-whith G as the Cholesky factor of B (satisfying B = G\*G').
+Implements the linearised Langevin equation using the **Euler-Maruyama** algorithm, whith G as the Cholesky factor of B (satisfying B = G\*G').
 
 `[t, sol] = solveLangevinLinear(M, G, nSteps, dt, startPoint, n)`
 
@@ -107,6 +106,24 @@ whith G as the Cholesky factor of B (satisfying B = G\*G').
 ---
 
 ## Scripts: Analysis and plots
+
+#### `fit_parameters.m`
+Fits the model parameters to the experimental time-series data for C8, HC10, and HC8 (from Le Guillouzer et. al. 2018) by minimising an objective function.
+The experimental data is interpolated onto a finer uniform time grid.
+
+**Settings:**
+
+| Flag | Options | Description |
+|------|---------|-------------|
+| `flagMethod` | 0 = SIMPLEX, 1 = SIMPSA | Optimisation algorithm |
+| `flagError` | 0 = all species, 1 = C8, 2 = HC10, 3 = HC8 | Error metric |
+| `nAverages` | integer | Number of independent optimisation runs |
+
+**Output:** `parFit_error_{flagError}_method_{flagMethod}_n_{nAverages}.dat` 
+
+**Depends on:** `objectiveFunction3.m`, `experimentalData.dat`, `parLong.dat`, `SIMPSA.m` or `SIMPLEXL.m`
+
+---
 
 #### `plot_det_sys_exp_data.m`
 Plots the deterministic solution of the Complete Model against experimental data for the three measured species: HC8, HC10, and C8.
@@ -190,11 +207,12 @@ Loads Langevin simulation output and theoretical second moments for all 4 cases 
 ## Suggested Workflow
 
 ```
-1. plot_det_sys_exp_data.m  →  check deterministic fit to data
-2. scan_KinKatt_CompVSRidott.m  →  run kin/katt parameter scan
-3. plot_scan_intensity.m    →  visualise scan results
-4. langevin_sims.m          →  compute equilibrium points and second moments and run stochastic simulations
-5. plot_histograms.m        →  compare simulation histograms to theory
+1. fit_model_params.m           →  run fit of model parameters
+2. plot_det_sys_exp_data.m      →  check deterministic fit to data
+3. scan_KinKatt_CompVSRidott.m  →  run kin/katt parameter scan
+4. plot_scan_intensity.m        →  visualise scan results
+5. langevin_sims.m              →  compute equilibrium points and second moments and run stochastic simulations
+6. plot_histograms.m            →  compare simulation histograms to theory
 
 ```
 ---
