@@ -25,7 +25,7 @@ paper citation...
 
 | File | Description |
 |------|-------------|
-| `experimentalData.dat` | Experimental time-series data for HC8, HC10, and C8 (from https://doi.org/10.1128/jb.00727-17). |
+| `experimentalData.dat` | Experimental time-series data for HC8, HC10, and C8 (from Le Guillouzer et al. 2018 https://doi.org/10.1128/jb.00727-17). |
 | `parLong.dat` | Fitted model parameters. |
 
 ---
@@ -108,7 +108,7 @@ Implements the linearised Langevin equation using the **Euler-Maruyama** algorit
 ## Scripts: Analysis and plots
 
 #### `fit_model_params.m`
-Fits the model parameters to the experimental time-series data for C8, HC10, and HC8 (from Le Guillouzer et. al. 2018) by minimising an objective function.
+Fits the model parameters to the experimental time-series data for C8, HC10, and HC8 (from Le Guillouzer et al. 2018, https://doi.org/10.1128/jb.00727-17) by minimising an objective function.
 The experimental data is interpolated onto a finer uniform time grid.
 
 **Settings:**
