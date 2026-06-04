@@ -8,13 +8,13 @@
 % =========================================================================
 
 % Results will be saved in the folder structure listed below.
-% NOTE: These folders must be created manually before running this script.
+% NOTE: These folders must be created manually before running this script
+% for the first time.
 %   SecMoms_EqPoints/
-%   FIT_0.03/nAv_CM   FIT_0.03/nAv_RM
-%   FIT_0.3/nAv_CM    FIT_0.3/nAv_RM
-%   MIN_0.03/nAv_CM   MIN_0.03/nAv_RM
-%   MIN_0.3/nAv_CM    MIN_0.3/nAv_RM
-%
+%   FIT_0.044719/nAv_CM   FIT_0.044719/nAv_RM
+%   FIT_0.4/nAv_CM    FIT_0.4/nAv_RM
+%   MIN_0.044719/nAv_CM   MIN_0.044719/nAv_RM
+%   MIN_0.4/nAv_CM    MIN_0.4/nAv_RM
 
 
 tic
@@ -26,13 +26,6 @@ output_folder = 'SecMoms_EqPoints/';
 n = 11;
 % Number of independent Langevin trajectories to average over
 nAverages = 25; 
-
-% Parameter scan: alpha3 values and parameter types
-alpha3Vet = [0.03,0.3];
-na        = length(alpha3Vet);
-typeVet   = {'FIT', 'MIN'};  % Loop over both parameter types
-nTypes    = length(typeVet);
-
 
 % Loading parameters
 paramFit = load('parLong.dat');
@@ -70,6 +63,13 @@ params(10) = paramFit(6);
 
 % Ratio alpha2/alpha3
 rap_alphas = paramFit(5)/paramFit(6);
+
+
+% Parameter scan: alpha3 values and parameter types
+alpha3Vet = [params(10),0.4];
+na        = length(alpha3Vet);
+typeVet   = {'FIT', 'MIN'};  % Loop over both parameter types
+nTypes    = length(typeVet);
 
 
 % Load experimental data and set initial conditions
