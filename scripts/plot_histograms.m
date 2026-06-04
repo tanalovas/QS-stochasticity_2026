@@ -13,7 +13,7 @@ figures_folder = 'figures/';
 %% Input data: equilibrium points and second moments
 
 % All cases: {type, alpha3} combinations
-cases = {'FIT', 0.03; 'FIT', 0.3; 'MIN', 0.03; 'MIN', 0.3};
+cases = {'FIT', 0.044719; 'FIT', 0.4; 'MIN', 0.044719; 'MIN', 0.4};
 nCases = size(cases, 1);
 
 % Load all equilibrium points and second moments into cell arrays
@@ -44,15 +44,15 @@ dt     = 1.25e-4;
 nSteps = 9.6e8;
 
 % Folders where Langevin output files are stored, one per case
-langFolders_CM = {'FIT_0.03/nAv_CM';
-                  'FIT_0.3/nAv_CM';
-                  'MIN_0.03/nAv_CM';
-                  'MIN_0.3/nAv_CM'};
+langFolders_CM = {'FIT_0.044719/nAv_CM';
+                  'FIT_0.4/nAv_CM';
+                  'MIN_0.044719/nAv_CM';
+                  'MIN_0.4/nAv_CM'};
 
-langFolders_RM = {'FIT_0.03/nAv_RM';
-                  'FIT_0.3/nAv_RM';
-                  'MIN_0.03/nAv_RM';
-                  'MIN_0.3/nAv_RM'};
+langFolders_RM = {'FIT_0.044719/nAv_RM';
+                  'FIT_0.4/nAv_RM';
+                  'MIN_0.044719/nAv_RM';
+                  'MIN_0.4/nAv_RM'};
 
 % Load Langevin simulation data for all cases
 stData_CM_all = cell(nCases, nAverages);
