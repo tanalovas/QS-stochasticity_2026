@@ -9,9 +9,14 @@ figures_folder = 'figures/';
 
 
 % INFO:
+% Initial info
+paramFit  = load('parLong.dat');
 
-% alpha3
-alpha3Vet=[0.03,0.3];
+% R3 production rate (alpha3)
+alpha3FIT = paramFit(6);
+
+% alpha3 vector
+alpha3Vet=[alpha3FIT,0.4];
 
 % all Kin and Katt that were used:
 k_ins = [0.0002,0.0006,0.001,0.003,0.008,0.03,0.06,0.1,0.3,0.5,0.9];
@@ -79,7 +84,7 @@ last3sp = (n-2):n;  % indices of the last 3: HC8 HC10 C8
 figure(1);
 fig1 = tiledlayout(2, 3);
 
-% alpha3 = 0.03
+% alpha3 = 0.044719
 for i = last3sp
     nexttile;
     scatter(kin, katt, 20, secMoms_ratios_a3_1(:,i), 'filled')
@@ -100,7 +105,7 @@ for i = last3sp
     end
 end
 
-% alpha3 = 0.3
+% alpha3 = 0.4
 for i = last3sp
     nexttile;
     scatter(kin, katt, 20, secMoms_ratios_a3_2(:,i), 'filled')
