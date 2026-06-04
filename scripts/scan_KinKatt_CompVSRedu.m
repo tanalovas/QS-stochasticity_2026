@@ -77,7 +77,7 @@ tspan = [3 60000];
 
 
 % Parameter scan: alpha3 values
-alpha3Vet = [params(10),0.3];
+alpha3Vet = [params(10),0.4];
 na        = length(alpha3Vet);
 
 
