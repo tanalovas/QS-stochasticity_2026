@@ -109,7 +109,7 @@ Implements the linearised Langevin equation using the **Euler-Maruyama** algorit
 
 #### `fit_model_params.m`
 Fits the model parameters to the experimental time-series data for C8, HC10, and HC8 (from Le Guillouzer et al. 2018, https://doi.org/10.1128/jb.00727-17) by minimising an objective function.
-The experimental data is interpolated onto a finer uniform time grid.
+The experimental data are interpolated onto a finer uniform time grid.
 
 **Settings:**
 
@@ -121,7 +121,12 @@ The experimental data is interpolated onto a finer uniform time grid.
 
 **Output:** `parFit_error_{flagError}_method_{flagMethod}_n_{nAverages}.dat` 
 
-**Depends on:** `objectiveFunction3.m`, `experimentalData.dat`, `parLong.dat`, `SIMPSA.m` or `SIMPLEXL.m`
+**Depends on:** `experimentalData.dat`, `parLong.dat`, and functions:
+- `objectiveFunction3.m`: Objective function for the fit. Solves the ODE system via `solveODEfit.m`, matches the solution to experimental time points, and computes a weighted 
+squared-error metric.
+- `solveODEfit.m`: Solves the 11-species ODE `sistemFit.m` over the experimental time span.
+- `sistemFit.m`: Fit-specific of the Complete Model ODE system
+- `SIMPSA.m` or `SIMPLEXL.m`: standard SIMPSA/SIMPLEXL toolbox.
 
 ---
 
