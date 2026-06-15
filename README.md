@@ -122,8 +122,7 @@ The experimental data are interpolated onto a finer uniform time grid.
 **Output:** `parFit_error_{flagError}_method_{flagMethod}_n_{nAverages}.dat` 
 
 **Depends on:** `experimentalData.dat`, `parLong.dat`, and functions:
-- `objectiveFunction3.m`: Objective function for the fit. Solves the ODE system via `solveODEfit.m`, matches the solution to experimental time points, and computes a weighted 
-squared-error metric.
+- `objectiveFunction3.m`: Objective function for the fit. Solves the ODE system via `solveODEfit.m`, matches the solution to experimental time points, and computes a weighted squared-error metric.
 - `solveODEfit.m`: Solves the 11-species ODE `sistemFit.m` over the experimental time span.
 - `sistemFit.m`: Fit-specific of the Complete Model ODE system
 - `SIMPSA.m` or `SIMPLEXL.m`: standard SIMPSA/SIMPLEXL toolbox.
@@ -144,8 +143,7 @@ Performs a 2D parameter scan over a grid of kin and katt values for two alpha3 v
 
 **What it does:**
 1. Loops over `alpha3Vet` (2 values), `k_ins` (11 values), and `k_atts` (18 values).
-2. For each combination, solves the ODE system, computes second moments, and
-   extracts the standard deviation of each species (sqrt of diagonal second moments).
+2. For each combination, solves the ODE system, computes second moments, and extracts the standard deviation of each species (sqrt of diagonal second moments).
 3. Optionally saves convergence plots as PDF files.
 
 **Output files:** 
@@ -153,8 +151,7 @@ Performs a 2D parameter scan over a grid of kin and katt values for two alpha3 v
 - `scan_eqPoints_a3_{alpha3}_kin_{kin}_katt_{katt}_CM/RM.dat`
 - convergence plots PDF
 
-**Depends on:** `sistemODE.m`, `sistemODE_12.m`, `calcMat_M_B.m`,
-`calcMat_M_B_12.m`, `matSecMoms.m`
+**Depends on:** `sistemODE.m`, `sistemODE_12.m`, `calcMat_M_B.m`, `calcMat_M_B_12.m`, `matSecMoms.m`
 
 ---
 
@@ -176,7 +173,7 @@ Computes and saves equilibrium points and steady-state second moments for all co
 Runs `nAverages` independent Langevin simulations for the same combinations of parameter type and alpha3, for both CM and RM.
 
 **What it does:**
-1. Loops over `typeVet = {'FIT', 'MIN'}` and `alpha3Vet = [0.03, 0.3]`
+1. Loops over `typeVet = {'FIT', 'MIN'}` and `alpha3Vet = [0.04, 0.4]`
 2. For each combination, solves the deterministic system (CM and RM) to find the equilibrium points, then computes the second moments analyticallycomputes M and B, and derives G via Cholesky decomposition
 3. Runs `nAverages = 25` independent trajectories using `solveLangevinLinear` and do a subsample every `skip = 1e5` steps before saving
 
@@ -190,13 +187,12 @@ Runs `nAverages` independent Langevin simulations for the same combinations of p
 - `{type}_secMom_a3_{alpha3}_CM/RM.dat`
 - `{type}_{alpha3}/nAv_CM/fileOut_nAV_{i}_CM/RM.dat`
 
-**Depends on:** `sistemODE.m`, `sistemODE_12.m`, `calcMat_M_B.m`,
-`calcMat_M_B_12.m`, `solveLangevinLinear.m`
+**Depends on:** `sistemODE.m`, `sistemODE_12.m`, `calcMat_M_B.m`, `calcMat_M_B_12.m`, `solveLangevinLinear.m`
 
 ---
 
 #### `plot_histograms.m`
-Loads Langevin simulation output and theoretical second moments for all 4 cases (FIT/MIN × alpha3=0.03/0.3), computes normalised mean histograms, and overlays theoretical Gaussian curves from the linearised second moments.
+Loads Langevin simulation output and theoretical second moments for all 4 cases (FIT/MIN × alpha3={0.04/0.4}), computes normalised mean histograms, and overlays theoretical Gaussian curves from the linearised second moments.
 
 **What it does:**
 1. For each case, loads all `nAverages` trajectory files for CM and RM
