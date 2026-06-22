@@ -15,8 +15,8 @@ The main steps of this analysis are:
 
 ## How to cite
 
-Code repository: https://doi.org/10.5281/zenodo.20794257
-Paper citation: will be updated upon publication.
+- Code repository: https://doi.org/10.5281/zenodo.20794257
+- Paper citation: will be updated upon publication.
 
 ---
 
