@@ -15,7 +15,7 @@ The main steps of this analysis are:
 
 ## How to cite
 
-paper citation...
+If you use this code, please cite the associated manuscript (citation will be updated upon publication).
 
 ---
 
