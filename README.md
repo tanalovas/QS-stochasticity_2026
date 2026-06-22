@@ -25,7 +25,7 @@ If you use this code, please cite the associated manuscript (citation will be up
 
 | File | Description |
 |------|-------------|
-| `experimentalData.dat` | Experimental time-series data for HC8, HC10, and C8 (from Le Guillouzer et al. 2018 https://doi.org/10.1128/jb.00727-17). |
+| `experimentalData.dat` | Experimental time-series data for HC8, HC10, and C8 (from Le Guillouzer et al. 2017 https://doi.org/10.1128/mbio.01861-17). |
 | `parLong.dat` | Fitted model parameters. |
 
 ---
